@@ -115,6 +115,7 @@ function initLenis() {
 }
 
 function initParallax() {
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
     const parallaxContainer = document.querySelector('.mdx-parallax');
     if (!parallaxContainer) {
         console.log('No parallax container found');
@@ -152,6 +153,11 @@ function initParallax() {
             else if (depth >= 5) speed = 0.06; // Mid-ground (statuia) moves down very subtly
             else if (depth >= 3) speed = 0.12; // Characters (birou) move slower in sus
             else speed = 0.32;                 // Foreground (iarba) moves faster
+
+            // On mobile, slow down only the foreground to avoid overshooting
+            if (isMobile && depth < 3) {
+                speed *= 0.6; // reduce by 40% on phones
+            }
             
             // Adjust direction based on layer type
             let yPos;
