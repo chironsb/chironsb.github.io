@@ -48,7 +48,6 @@ extra_javascript:
 plugins:
   - search
 
-dev_addr: 0.0.0.0:9999
 
 markdown_extensions:
   - admonition
