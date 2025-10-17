@@ -51,7 +51,7 @@ mkdocs build
 ## 🖼️ Imagini și Media
 
 ### Imagini cu Stilizare
-![Landscape](assets/images/layers/1-landscape.png){ width="300" }
+![Landscape](assets/images/layers/1.png){ width="300" }
 
 ## 📊 Diagrame și Vizualizări
 

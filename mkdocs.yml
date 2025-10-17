@@ -96,6 +96,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Capacități: capacitati.md
   - Proiecte:
     - Overview: proiecte.md
     - Strudel Cheatsheet:
