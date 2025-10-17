@@ -156,7 +156,7 @@ function initParallax() {
 
             // On mobile, slow down only the foreground to avoid overshooting
             if (isMobile && depth < 3) {
-                speed *= 0.6; // reduce by 40% on phones
+                speed *= 0.4; // reduce by 60% on phones
             }
             
             // Adjust direction based on layer type
@@ -171,6 +171,11 @@ function initParallax() {
             }
             
             // Apply transform to the layer
+            if (isMobile && depth < 3) {
+                // Cap upward movement on phones so bottom edge never shows
+                const maxUp = windowHeight * 0.22; // ~22% of viewport
+                yPos = Math.max(yPos, -maxUp);
+            }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
