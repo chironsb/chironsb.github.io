@@ -1,7 +1,17 @@
 // Parallax Effect JavaScript with Lenis Smooth Scrolling
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize smooth scrolling on all pages
-    initLenis();
+    const mobileLike = (window.matchMedia && (
+        window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+        window.matchMedia('(max-width: 900px)').matches
+    ));
+
+    // Initialize smooth scrolling only on non-mobile devices
+    if (!mobileLike) {
+        initLenis();
+    } else {
+        // Ensure native scroll on mobile
+        document.documentElement.style.scrollBehavior = 'auto';
+    }
     
     // Only initialize parallax on homepage (where .mdx-parallax exists)
     if (document.querySelector('.mdx-parallax')) {
@@ -118,7 +128,6 @@ function initParallax() {
     const isMobile = (
         (window.matchMedia && (window.matchMedia('(hover: none) and (pointer: coarse)').matches || window.matchMedia('(max-width: 900px)').matches))
     );
-    console.log('Parallax mobile mode:', isMobile, 'vw:', window.innerWidth);
     const parallaxContainer = document.querySelector('.mdx-parallax');
     if (!parallaxContainer) {
         console.log('No parallax container found');
