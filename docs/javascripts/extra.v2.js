@@ -167,10 +167,7 @@ function initParallax() {
             else if (depth >= 3) speed = 0.12; // Characters (birou) move slower in sus
             else speed = 0.32;                 // Foreground (iarba) moves faster
 
-            // On mobile, slow down only the foreground to avoid overshooting
-            if (isMobile && (isGrassLayer || depth < 3)) {
-                speed *= 0.2; // much slower on phones for foreground (and especially grass)
-            }
+            // Mobile-specific slowdown disabled to restore initial behavior
             
             // Adjust direction based on layer type
             let yPos;
@@ -183,15 +180,7 @@ function initParallax() {
                 yPos = -(scrollTop * speed);
             }
             
-            // Apply transform to the layer
-            if (isMobile && (isGrassLayer || depth < 3)) {
-                // Start higher on phones for shallow/foreground layers
-                const baseOffsetUp = -windowHeight * 0.28; // raise ~28% of viewport
-                yPos += baseOffsetUp;
-                // Cap upward movement so bottom edge never shows, but allow some travel
-                const maxUp = windowHeight * 0.18; // allow ~18% upward travel relative to baseline
-                yPos = Math.max(yPos, -maxUp + baseOffsetUp);
-            }
+            // Apply transform to the layer (no mobile baseline/cap)
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
