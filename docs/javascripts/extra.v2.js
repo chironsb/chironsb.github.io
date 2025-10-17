@@ -115,9 +115,6 @@ function initLenis() {
 }
 
 function initParallax() {
-    const isMobile = (
-        (window.matchMedia && (window.matchMedia('(hover: none) and (pointer: coarse)').matches || window.matchMedia('(max-width: 900px)').matches))
-    );
     const parallaxContainer = document.querySelector('.mdx-parallax');
     if (!parallaxContainer) {
         console.log('No parallax container found');
@@ -156,7 +153,6 @@ function initParallax() {
         parallaxLayers.forEach(layer => {
             const depth = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
             const bgImage = getComputedStyle(layer).backgroundImage || '';
-            const isGrassLayer = bgImage.includes('assets/images/layers/1.png') || bgImage.includes('layers/1.png');
             
             // Calculate parallax speed based on depth - fine-tuned
             let speed;
@@ -165,10 +161,7 @@ function initParallax() {
             else if (depth >= 3) speed = 0.12; // Characters (birou) move slower in sus
             else speed = 0.32;                 // Foreground (iarba) moves faster
 
-            // Only adjust grass on mobile to avoid jump
-            if (isMobile && isGrassLayer) {
-                speed *= 0.2; // slower on phones for grass only
-            }
+            // No mobile-specific adjustments; restore initial behavior
             
             // Adjust direction based on layer type
             let yPos;
@@ -180,11 +173,7 @@ function initParallax() {
                 yPos = -(scrollTop * speed);
             }
             
-            // Apply transform; cap only grass upward travel on mobile (small cap to prevent popping)
-            if (isMobile && isGrassLayer) {
-                const maxUp = windowHeight * 0.10; // cap ~10% upward
-                yPos = Math.max(yPos, -maxUp);
-            }
+            // Apply transform without mobile caps
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
