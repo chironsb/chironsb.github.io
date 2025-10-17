@@ -138,6 +138,14 @@ function initParallax() {
 
     console.log('Found', parallaxLayers.length, 'parallax layers');
 
+    // Determine the foreground layer as the one with the smallest depth
+    let foregroundDepth = null;
+    parallaxLayers.forEach(layer => {
+        const d = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
+        if (foregroundDepth === null || d < foregroundDepth) foregroundDepth = d;
+    });
+    console.log('Detected foreground depth =', foregroundDepth);
+
     let ticking = false;
 
     function updateParallax() {
@@ -155,8 +163,8 @@ function initParallax() {
             else speed = 0.32;                 // Foreground (iarba) moves faster
 
             // On mobile, slow down only the foreground to avoid overshooting
-            if (isMobile && depth < 3) {
-                speed *= 0.4; // reduce by 60% on phones
+            if (isMobile && depth === foregroundDepth) {
+                speed *= 0.3; // stronger slowdown on phones for real foreground
             }
             
             // Adjust direction based on layer type
@@ -171,9 +179,9 @@ function initParallax() {
             }
             
             // Apply transform to the layer
-            if (isMobile && depth < 3) {
+            if (isMobile && depth === foregroundDepth) {
                 // Cap upward movement on phones so bottom edge never shows
-                const maxUp = windowHeight * 0.22; // ~22% of viewport
+                const maxUp = windowHeight * 0.18; // tighter cap ~18% of viewport
                 yPos = Math.max(yPos, -maxUp);
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
