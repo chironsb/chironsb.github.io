@@ -115,8 +115,10 @@ function initLenis() {
 }
 
 function initParallax() {
-    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-    console.log('Parallax mobile mode:', isMobile);
+    const isMobile = (
+        (window.matchMedia && (window.matchMedia('(hover: none) and (pointer: coarse)').matches || window.matchMedia('(max-width: 900px)').matches))
+    );
+    console.log('Parallax mobile mode:', isMobile, 'vw:', window.innerWidth);
     const parallaxContainer = document.querySelector('.mdx-parallax');
     if (!parallaxContainer) {
         console.log('No parallax container found');
@@ -166,7 +168,7 @@ function initParallax() {
             else speed = 0.32;                 // Foreground (iarba) moves faster
 
             // On mobile, slow down only the foreground to avoid overshooting
-            if (isMobile && (isGrassLayer || depth === foregroundDepth)) {
+            if (isMobile && (isGrassLayer || depth < 3)) {
                 speed *= 0.2; // much slower on phones for foreground (and especially grass)
             }
             
@@ -182,12 +184,12 @@ function initParallax() {
             }
             
             // Apply transform to the layer
-            if (isMobile && (isGrassLayer || depth === foregroundDepth)) {
-                // Start much higher on phones (approx half screen)
-                const baseOffsetUp = -windowHeight * 0.50; // raise ~50% of viewport
+            if (isMobile && (isGrassLayer || depth < 3)) {
+                // Start higher on phones for shallow/foreground layers
+                const baseOffsetUp = -windowHeight * 0.28; // raise ~28% of viewport
                 yPos += baseOffsetUp;
                 // Cap upward movement so bottom edge never shows, but allow some travel
-                const maxUp = windowHeight * 0.22; // allow ~22% upward travel relative to baseline
+                const maxUp = windowHeight * 0.18; // allow ~18% upward travel relative to baseline
                 yPos = Math.max(yPos, -maxUp + baseOffsetUp);
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
