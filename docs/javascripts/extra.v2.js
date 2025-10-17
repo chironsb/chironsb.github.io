@@ -1,17 +1,7 @@
 // Parallax Effect JavaScript with Lenis Smooth Scrolling
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileLike = (window.matchMedia && (
-        window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
-        window.matchMedia('(max-width: 900px)').matches
-    ));
-
-    // Initialize smooth scrolling only on non-mobile devices
-    if (!mobileLike) {
-        initLenis();
-    } else {
-        // Ensure native scroll on mobile
-        document.documentElement.style.scrollBehavior = 'auto';
-    }
+    // Always initialize smooth scrolling (keep it)
+    initLenis();
     
     // Only initialize parallax on homepage (where .mdx-parallax exists)
     if (document.querySelector('.mdx-parallax')) {
@@ -156,7 +146,6 @@ function initParallax() {
         const d = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
         if (foregroundDepth === null || d < foregroundDepth) foregroundDepth = d;
     });
-    console.log('Detected foreground depth =', foregroundDepth);
 
     let ticking = false;
 
@@ -176,20 +165,26 @@ function initParallax() {
             else if (depth >= 3) speed = 0.12; // Characters (birou) move slower in sus
             else speed = 0.32;                 // Foreground (iarba) moves faster
 
-            // Mobile-specific slowdown disabled to restore initial behavior
+            // Only adjust grass on mobile to avoid jump
+            if (isMobile && isGrassLayer) {
+                speed *= 0.2; // slower on phones for grass only
+            }
             
             // Adjust direction based on layer type
             let yPos;
             if (depth === 5) {
                 // Statuia se mișcă în jos (pozitiv) când scroll-ezi
                 yPos = scrollTop * speed;
-                console.log(`Statuie: depth=${depth}, speed=${speed}, scrollTop=${scrollTop}, yPos=${yPos}`);
             } else {
                 // Alte layere se mișcă în sus (negativ) când scroll-ezi
                 yPos = -(scrollTop * speed);
             }
             
-            // Apply transform to the layer (no mobile baseline/cap)
+            // Apply transform; cap only grass upward travel on mobile (small cap to prevent popping)
+            if (isMobile && isGrassLayer) {
+                const maxUp = windowHeight * 0.10; // cap ~10% upward
+                yPos = Math.max(yPos, -maxUp);
+            }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
