@@ -181,9 +181,12 @@ function initParallax() {
             
             // Apply transform to the layer
             if (isMobile && depth === foregroundDepth) {
-                // Cap upward movement on phones so bottom edge never shows
+                // Start slightly higher on phones so grass sits correctly
+                const baseOffsetUp = -windowHeight * 0.06; // raise ~6% of viewport
+                yPos += baseOffsetUp;
+                // Cap upward movement so bottom edge never shows
                 const maxUp = windowHeight * 0.12; // even tighter cap ~12% of viewport
-                yPos = Math.max(yPos, -maxUp);
+                yPos = Math.max(yPos, -maxUp + baseOffsetUp);
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
