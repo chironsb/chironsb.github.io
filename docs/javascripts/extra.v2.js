@@ -1,6 +1,6 @@
 // Parallax Effect JavaScript with Lenis Smooth Scrolling
 document.addEventListener('DOMContentLoaded', function() {
-    // Always initialize smooth scrolling (keep it)
+    // Initialize smooth scrolling on all pages
     initLenis();
     
     // Only initialize parallax on homepage (where .mdx-parallax exists)
@@ -137,13 +137,6 @@ function initParallax() {
 
     console.log('Found', parallaxLayers.length, 'parallax layers');
 
-    // Determine the foreground layer as the one with the smallest depth
-    let foregroundDepth = null;
-    parallaxLayers.forEach(layer => {
-        const d = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
-        if (foregroundDepth === null || d < foregroundDepth) foregroundDepth = d;
-    });
-
     let ticking = false;
 
     function updateParallax() {
@@ -152,7 +145,6 @@ function initParallax() {
         
         parallaxLayers.forEach(layer => {
             const depth = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
-            const bgImage = getComputedStyle(layer).backgroundImage || '';
             
             // Calculate parallax speed based on depth - fine-tuned
             let speed;
@@ -160,20 +152,19 @@ function initParallax() {
             else if (depth >= 5) speed = 0.06; // Mid-ground (statuia) moves down very subtly
             else if (depth >= 3) speed = 0.12; // Characters (birou) move slower in sus
             else speed = 0.32;                 // Foreground (iarba) moves faster
-
-            // No mobile-specific adjustments; restore initial behavior
             
             // Adjust direction based on layer type
             let yPos;
             if (depth === 5) {
                 // Statuia se mișcă în jos (pozitiv) când scroll-ezi
                 yPos = scrollTop * speed;
+                console.log(`Statuie: depth=${depth}, speed=${speed}, scrollTop=${scrollTop}, yPos=${yPos}`);
             } else {
                 // Alte layere se mișcă în sus (negativ) când scroll-ezi
                 yPos = -(scrollTop * speed);
             }
             
-            // Apply transform without mobile caps
+            // Apply transform to the layer
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
