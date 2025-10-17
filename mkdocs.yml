@@ -43,7 +43,7 @@ theme:
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
-  - javascripts/extra.js
+  - javascripts/extra.v2.js
 
 plugins:
   - search
