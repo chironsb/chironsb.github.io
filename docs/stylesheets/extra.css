@@ -1,0 +1,936 @@
+/* ==============================================
+   CHIRON'S BLOG - CLEAN CSS STRUCTURE
+   ============================================== */
+
+/* ===== GLOBAL STYLES ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  scroll-snap-type: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-accent-fg-color) var(--md-default-bg-color);
+}
+
+*, *::before, *::after {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-behavior: smooth;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: smooth;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-accent-fg-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-primary-fg-color);
+}
+
+/* ===== HEADER STYLES ===== */
+.md-header {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  position: sticky !important;
+  top: 0 !important;
+}
+
+
+
+.md-header__inner {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 1rem !important;
+}
+
+.md-header-nav {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Header on scroll */
+.md-header[data-md-state="shadow"] {
+  background-color: rgba(33, 37, 41, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-header-nav__title,
+.md-header[data-md-state="shadow"] .md-header__title {
+  color: var(--md-primary-fg-color) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-nav__link {
+  color: var(--md-primary-fg-color) !important;
+  opacity: 0.8;
+}
+
+.md-header[data-md-state="shadow"] .md-nav__link:hover {
+  opacity: 1 !important;
+}
+
+.md-header[data-md-state="shadow"] .md-search__input {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 193, 7, 0.4) !important;
+  color: var(--md-primary-fg-color) !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Prevent brightening on hover - darken instead */
+.md-header[data-md-state="shadow"] .md-search__input:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-color: rgba(255, 193, 7, 0.6) !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.md-header[data-md-state="shadow"] .md-search__input:focus,
+.md-header[data-md-state="shadow"] .md-search__input:focus-within {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 193, 7, 0.7) !important;
+}
+
+/* Override any Material theme hover effects */
+.md-header[data-md-state="shadow"] .md-search__form:hover .md-search__input,
+[data-md-color-scheme="slate"] .md-header[data-md-state="shadow"] .md-search__input:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-image: none !important;
+}
+
+.md-header[data-md-state="shadow"] .md-search__input::placeholder {
+  color: rgba(255, 193, 7, 0.8) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-search__icon {
+  color: var(--md-primary-fg-color) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-search__icon svg {
+  fill: var(--md-primary-fg-color) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-search-result {
+  background-color: rgba(33, 37, 41, 0.95) !important;
+  border: 1px solid rgba(255, 193, 7, 0.3) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-header__button {
+  color: var(--md-primary-fg-color) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-tabs__link {
+  color: rgba(255, 193, 7, 0.8) !important;
+}
+
+.md-header[data-md-state="shadow"] .md-tabs__link--active {
+  color: var(--md-primary-fg-color) !important;
+  border-bottom-color: var(--md-primary-fg-color) !important;
+}
+
+/* Header title */
+.md-header__title {
+  transition: all 0.25s cubic-bezier(0.1, 0.7, 0.1, 1) !important;
+  margin-left: -0.2rem !important;
+}
+
+.md-header__title--active {
+  display: block !important;
+}
+
+/* Header alignment */
+.md-header-nav__button + .md-header__title,
+.md-header__title {
+  margin-left: 2rem !important;
+}
+
+/* ===== LOGO STYLES ===== */
+.md-header__logo,
+[data-md-component="logo"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  padding: 0.2rem 0 !important;
+  margin-left: 2rem !important;
+}
+
+.md-header__logo img,
+.md-header__logo svg,
+.md-header__logo picture,
+[data-md-component="logo"] img,
+[data-md-component="logo"] svg,
+[data-md-component="logo"] picture {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+  transition: transform 0.2s ease !important;
+}
+
+.md-header__logo:hover img,
+[data-md-component="logo"]:hover img {
+  transform: scale(1.05) !important;
+}
+
+/* Amber logo on scroll */
+.md-header[data-md-state="shadow"] .md-header__logo img,
+.md-header[data-md-state="shadow"] [data-md-component="logo"] img {
+  content: url("../assets/images/chironslogoamber.png") !important;
+}
+
+/* Responsive logo positioning */
+@media screen and (max-width: 76.1875em) {
+  .md-header__logo,
+  [data-md-component="logo"] {
+    margin-left: 1.5rem !important;
+  }
+  
+  .md-header-nav__button + .md-header__title,
+  .md-header__title {
+    margin-left: 1.5rem !important;
+  }
+}
+
+@media screen and (max-width: 60em) {
+  .md-header__logo,
+  [data-md-component="logo"] {
+    margin-left: 1rem !important;
+  }
+  
+  .md-header-nav__button + .md-header__title,
+  .md-header__title {
+    margin-left: 1rem !important;
+  }
+}
+
+/* ===== NAVIGATION TABS ===== */
+.md-tabs {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999 !important;
+  position: relative !important;
+  height: auto !important;
+  min-height: 2.8rem !important;
+  display: block !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  transition: 
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Tabs sticky only on homepage - directly under header */
+body:has(.mdx-parallax) .md-tabs {
+  position: sticky !important;
+  top: 48px !important;
+  height: 2.8rem !important;
+  max-height: 2.8rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+
+.md-tabs__inner {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 1rem !important;
+  height: 2.8rem !important;
+}
+
+.md-tabs__list {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  }
+  
+/* Center the tabs - clean and simple */
+.md-tabs__inner {
+  justify-content: center !important;
+  display: flex !important;
+}
+
+.md-tabs__list {
+  justify-content: center !important;
+  display: flex !important;
+}
+
+/* Tabs visibility on all screen sizes */
+@media screen and (max-width: 76.1875em) {
+  .md-tabs {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .md-tabs__inner {
+    display: flex !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  
+  .md-tabs__inner::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .md-tabs__list {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    min-width: max-content !important;
+  }
+}
+
+/* Tabs hide animation on scroll - gradual fade */
+.md-header[data-md-state="shadow"] ~ .md-tabs,
+body:has(.md-header[data-md-state="shadow"]) .md-tabs,
+.md-header[data-md-state="shadow"] .md-tabs {
+  transform: translateY(-50%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: 
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Hide tabs completely on homepage only */
+body:has(.mdx-parallax) .md-header[data-md-state="shadow"] ~ .md-tabs,
+body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: 
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Hide only the navigation burger menu button, not the logo */
+.md-header__button.md-icon {
+  display: none !important;
+}
+
+/* Show logo button but hide hamburger menu */
+.md-header__button:not([data-md-component="logo"]) {
+  display: none !important;
+}
+
+/* ===== BACK TO TOP BUTTON ===== */
+  .md-top {
+  z-index: 2000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform: translateY(20px) !important;
+  pointer-events: auto !important;
+  }
+  
+  .md-top.md-top--show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+  z-index: 2000 !important;
+    pointer-events: auto !important;
+  }
+  
+  .md-top__inner {
+    background: var(--md-accent-fg-color) !important;
+    color: var(--md-accent-bg-color) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 50% !important;
+    width: 48px !important;
+    height: 48px !important;
+    transition: all 0.2s ease-out !important;
+  }
+  
+  .md-top:hover .md-top__inner {
+    transform: scale(1.1) translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+/* ===== BUTTONS ===== */
+.md-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.md-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ===== PARALLAX EFFECT ===== */
+.mdx-parallax {
+  position: relative;
+  height: auto;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: -120px;
+  overflow: visible;
+  z-index: 100;
+}
+
+/* Responsive parallax */
+@media screen and (max-width: 768px) {
+  .mdx-parallax {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    overflow-x: hidden !important;
+  }
+  
+  .mdx-parallax__group:first-child {
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+  
+  .mdx-parallax__layer {
+    width: 100vw !important;
+    overflow: hidden !important;
+  }
+  
+  .mdx-parallax__layer img {
+    width: 120vw !important;
+    min-width: 120vw !important;
+    left: -10vw !important;
+    transform: translateX(0) !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
+
+/* Parallax groups */
+.mdx-parallax__group {
+  position: relative;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.mdx-parallax__group:first-child {
+  height: 120vh;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  z-index: 10;
+}
+
+.mdx-parallax__group:last-child {
+  min-height: 100vh;
+  background: var(--md-default-bg-color);
+  position: relative;
+  z-index: 10;
+}
+
+/* Parallax layers */
+.mdx-parallax__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  pointer-events: none !important;
+  transition: transform 0.1s ease-out !important;
+}
+
+.mdx-parallax__image {
+  position: absolute;
+  object-fit: cover;
+  will-change: transform;
+  transition: transform 0.1s ease-out !important;
+}
+
+.mdx-parallax__blend {
+  transition: opacity 0.3s ease-out !important;
+}
+
+/* Responsive grass positioning */
+.mdx-parallax__layer[style*="--md-parallax-depth: 1"] img {
+  top: calc(45vh - 5vw) !important;
+  height: calc(100vh + 18vw) !important;
+}
+
+@media screen and (min-aspect-ratio: 21/9) {
+  .mdx-parallax__layer[style*="--md-parallax-depth: 1"] img {
+    top: calc(30vh - 3vw) !important;
+    height: calc(110vh + 20vw) !important;
+  }
+}
+
+@media screen and (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+  .mdx-parallax__layer[style*="--md-parallax-depth: 1"] img {
+    top: calc(35vh - 4vw) !important;
+    height: calc(105vh + 19vw) !important;
+  }
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+  .mdx-parallax__layer[style*="--md-parallax-depth: 1"] img {
+    top: calc(50vh - 6vw) !important;
+    height: calc(95vh + 16vw) !important;
+  }
+}
+
+/* Pointer events management */
+.mdx-parallax__layer,
+.mdx-parallax__image,
+.mdx-parallax__blend,
+.mdx-hero__inner,
+.mdx-hero__teaser,
+.mdx-hero__more {
+  pointer-events: none !important;
+}
+
+.md-top,
+.md-header,
+.md-tabs,
+.md-nav {
+  pointer-events: auto !important;
+}
+
+/* ===== HERO SECTION ===== */
+.mdx-hero {
+  width: 100%;
+  max-width: none;
+}
+
+.mdx-hero__scrollwrap {
+  width: 100vw;
+  max-width: none;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+.mdx-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mdx-hero__teaser {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mdx-hero__more {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mdx-hero__more svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+  opacity: 0.7;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ===== FADE TRANSITION ===== */
+.mdx-fade-transition {
+  height: calc(150px + 5vw) !important;
+}
+
+@media screen and (min-aspect-ratio: 21/9) {
+  .mdx-fade-transition {
+    height: calc(100px + 3vw) !important;
+  }
+}
+
+@media screen and (min-aspect-ratio: 16/9) and (max-aspect-ratio: 21/9) {
+  .mdx-fade-transition {
+    height: calc(120px + 4vw) !important;
+  }
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+  .mdx-fade-transition {
+    height: calc(180px + 7vw) !important;
+  }
+}
+
+/* ===== CONTENT CARDS ===== */
+.mdx-expect__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.mdx-expect__item {
+  background: var(--md-default-bg-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.mdx-expect__item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mdx-expect__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--md-accent-fg-color--transparent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mdx-expect__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--md-accent-fg-color);
+}
+
+.mdx-expect__description {
+  flex: 1;
+}
+
+.mdx-expect__description h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--md-default-fg-color);
+}
+
+.mdx-expect__description p {
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.md-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.md-main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ===== WIDE LAYOUT - PUSH SIDEBARS TO EDGES ===== */
+/* Main container - use full width */
+.md-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Grid layout - wider content area */
+.md-grid {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 2rem !important;
+}
+
+/* Main content area - expand to use more space */
+.md-main__inner {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: 280px 1fr 280px !important;
+  gap: 2rem !important;
+  align-items: start !important;
+}
+
+/* Ensure TOC shows in right sidebar */
+.md-sidebar--secondary .md-toc {
+  display: block !important;
+}
+
+.md-toc__list {
+  display: block !important;
+}
+
+
+
+/* Left sidebar - table of contents and navigation */
+.md-sidebar--primary {
+  position: sticky !important;
+  top: 80px !important;
+  width: 280px !important;
+  max-width: 280px !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: var(--md-default-bg-color--light) !important;
+  border-radius: 8px !important;
+  height: fit-content !important;
+  max-height: calc(100vh - 100px) !important;
+  overflow-y: auto !important;
+  z-index: 10 !important;
+  /* Hide scrollbar completely */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* (Removed) Collapsible styling for Proiecte section */
+
+.md-sidebar--primary::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Right sidebar - page TOC */
+.md-sidebar--secondary {
+  position: sticky !important;
+  top: 80px !important;
+  width: 280px !important;
+  max-width: 280px !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: var(--md-default-bg-color--light) !important;
+  border-radius: 8px !important;
+  height: fit-content !important;
+  max-height: calc(100vh - 100px) !important;
+  overflow-y: auto !important;
+  z-index: 10 !important;
+  /* Hide scrollbar completely */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.md-sidebar--secondary::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Prevent TOC auto-scrolling behavior */
+.md-nav--secondary {
+  scroll-behavior: auto !important;
+}
+
+.md-nav--secondary .md-nav__item--active {
+  scroll-margin: 0 !important;
+}
+
+/* Disable automatic TOC tracking */
+.md-sidebar--secondary .md-nav {
+  scroll-behavior: initial !important;
+}
+
+/* Main content - center column */
+.md-content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 2rem !important;
+  background: var(--md-default-bg-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Content inner - full width */
+.md-content__inner {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Typography adjustments for wider content */
+.md-typeset {
+  max-width: none !important;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.md-typeset p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 1200px) {
+  .md-main__inner {
+    grid-template-columns: 250px 1fr 250px !important;
+    gap: 1.5rem !important;
+  }
+  
+  .md-sidebar--primary,
+  .md-sidebar--secondary {
+    width: 250px !important;
+    max-width: 250px !important;
+  }
+  
+  .md-grid {
+    padding: 0 1rem !important;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .md-main__inner {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .md-sidebar--primary,
+  .md-sidebar--secondary {
+    width: 100% !important;
+    max-width: none !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .md-content {
+    padding: 1.5rem !important;
+  }
+}
+
+/* Clean isolation */
+.mdx-parallax {
+  isolation: isolate;
+}
+
+/* Hide navigation during parallax */
+.mdx-parallax ~ * .md-nav,
+.mdx-parallax ~ * .md-nav__item,
+.mdx-parallax ~ * .md-nav__link,
+.mdx-parallax ~ * .md-nav__title,
+body:has(.mdx-parallax) .md-nav--primary {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  z-index: -10 !important;
+}
+
+body:has(.mdx-parallax) .md-main,
+body:has(.mdx-parallax) .md-footer {
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Hide sidebars completely on homepage with parallax */
+body:has(.mdx-parallax) .md-sidebar--primary,
+body:has(.mdx-parallax) .md-sidebar--secondary {
+  display: none !important;
+}
+
+/* On homepage, use normal single-column layout */
+body:has(.mdx-parallax) .md-main__inner {
+  display: block !important;
+  grid-template-columns: none !important;
+}
+
+body:has(.mdx-parallax) .md-content {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* Fade overlay */
+.mdx-parallax + div[style*="z-index: 1002"] {
+  z-index: 1010 !important;
+  isolation: isolate;
+  pointer-events: none !important;
+}
+
+/* ===== SIDEBAR TITLES HIGHLIGHTING - BLUE ===== */
+/* Highlight active section (non-clickable headers) in left sidebar - blue */
+.md-sidebar--primary .md-nav__item--section.md-nav__item--active > .md-nav__link {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Highlight "Table of Contents" title in right sidebar - blue */
+.md-sidebar--secondary .md-nav__title {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Highlight section titles (non-clickable) in left sidebar - blue */
+.md-sidebar--primary .md-nav__title {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 600 !important;
+}
+
+/* Active item in TOC (right sidebar) - where you are scrolling - AMBER */
+.md-sidebar--secondary .md-nav__link--active {
+  color: var(--md-primary-fg-color) !important;
+  font-weight: 500 !important;
+}
+
+/* Active page in left sidebar - AMBER */
+.md-sidebar--primary .md-nav__link--active {
+  color: var(--md-primary-fg-color) !important;
+  font-weight: 500 !important;
+}
+
+/* ===== SIDEBAR HOVER - KEEP AMBER (text only, no background) ===== */
+/* Hover effects for all navigation links - amber/primary color */
+.md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--secondary .md-nav__link:hover {
+  color: var(--md-primary-fg-color) !important;
+}
+ 
+

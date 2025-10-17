@@ -1,0 +1,120 @@
+site_name: Chiron's Blog
+site_description: Personal blog and journal
+site_author: Chiron
+site_url: https://chironsb.github.io
+
+theme:
+  name: material
+  logo: assets/images/chironslogo.png
+  favicon: assets/images/chironslogo.png
+
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+  palette:
+    - scheme: slate
+      primary: amber
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+    - scheme: default
+      primary: amber
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.prune
+    - navigation.top
+    - navigation.tracking
+    - content.action.edit
+    - content.code.copy
+    - content.tooltips
+    - search.highlight
+    - search.share
+    - search.suggest
+
+# Custom CSS and JavaScript for parallax
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+
+plugins:
+  - search
+
+dev_addr: 0.0.0.0:9999
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+      css_class: highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Proiecte:
+    - Overview: proiecte.md
+    - Strudel Cheatsheet:
+      - Index: strudelcheatsheet/00-Index.md
+      - Sunete și Note: strudelcheatsheet/01-Sunete-Note.md
+      - Mini-Notation: strudelcheatsheet/02-Mini-Notation.md
+      - Efecte Audio: strudelcheatsheet/03-Efecte-Audio.md
+      - Pattern Modifiers: strudelcheatsheet/04-Pattern-Modifiers.md
+      - Combinații și Exemple: strudelcheatsheet/05-Combinatii-Exemple.md
+      - Mini-Notation Avansată: strudelcheatsheet/06-Mini-Notation-Avansata.md
+      - Sample-uri Avansate: strudelcheatsheet/07-Sample-uri-Avansate.md
+      - Synth-uri Avansate: strudelcheatsheet/08-Synth-uri-Avansate.md
+      - Modulare Timp: strudelcheatsheet/09-Modulare-Timp.md
+      - Signals și Modulare: strudelcheatsheet/10-Signals-Modulare.md
+      - Vizualizări și Controale: strudelcheatsheet/11-Vizualizari-Controale.md
+      - Lista Completă: strudelcheatsheet/99-Lista-Completa.md
+  - Community:
+    - Overview: community/index.md
+    - Contributing: community/contributing.md
+    - Events: community/events.md
+  - Contributing: contributing.md 
