@@ -182,7 +182,7 @@ function initParallax() {
             // Apply transform to the layer
             if (isMobile && depth === foregroundDepth) {
                 // Start slightly higher on phones so grass sits correctly
-                const baseOffsetUp = -windowHeight * 0.02; // raise ~2% of viewport (less aggressive)
+                const baseOffsetUp = -windowHeight * 0.10; // raise ~10% of viewport (much higher)
                 yPos += baseOffsetUp;
                 // Cap upward movement so bottom edge never shows
                 const maxUp = windowHeight * 0.15; // relax cap to ~15% to keep more visible
