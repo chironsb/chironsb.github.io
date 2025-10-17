@@ -116,6 +116,7 @@ function initLenis() {
 
 function initParallax() {
     const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    console.log('Parallax mobile mode:', isMobile);
     const parallaxContainer = document.querySelector('.mdx-parallax');
     if (!parallaxContainer) {
         console.log('No parallax container found');
@@ -164,7 +165,7 @@ function initParallax() {
 
             // On mobile, slow down only the foreground to avoid overshooting
             if (isMobile && depth === foregroundDepth) {
-                speed *= 0.3; // stronger slowdown on phones for real foreground
+                speed *= 0.2; // much slower on phones for foreground
             }
             
             // Adjust direction based on layer type
@@ -181,7 +182,7 @@ function initParallax() {
             // Apply transform to the layer
             if (isMobile && depth === foregroundDepth) {
                 // Cap upward movement on phones so bottom edge never shows
-                const maxUp = windowHeight * 0.18; // tighter cap ~18% of viewport
+                const maxUp = windowHeight * 0.12; // even tighter cap ~12% of viewport
                 yPos = Math.max(yPos, -maxUp);
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
