@@ -155,6 +155,8 @@ function initParallax() {
         
         parallaxLayers.forEach(layer => {
             const depth = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
+            const bgImage = getComputedStyle(layer).backgroundImage || '';
+            const isGrassLayer = bgImage.includes('assets/images/layers/1.png') || bgImage.includes('layers/1.png');
             
             // Calculate parallax speed based on depth - fine-tuned
             let speed;
@@ -164,8 +166,8 @@ function initParallax() {
             else speed = 0.32;                 // Foreground (iarba) moves faster
 
             // On mobile, slow down only the foreground to avoid overshooting
-            if (isMobile && depth === foregroundDepth) {
-                speed *= 0.2; // much slower on phones for foreground
+            if (isMobile && (isGrassLayer || depth === foregroundDepth)) {
+                speed *= 0.2; // much slower on phones for foreground (and especially grass)
             }
             
             // Adjust direction based on layer type
@@ -180,12 +182,12 @@ function initParallax() {
             }
             
             // Apply transform to the layer
-            if (isMobile && depth === foregroundDepth) {
-                // Start slightly higher on phones so grass sits correctly
-                const baseOffsetUp = -windowHeight * 0.10; // raise ~10% of viewport (much higher)
+            if (isMobile && (isGrassLayer || depth === foregroundDepth)) {
+                // Start higher on phones so grass sits correctly
+                const baseOffsetUp = -windowHeight * 0.18; // raise ~18% of viewport (much higher)
                 yPos += baseOffsetUp;
                 // Cap upward movement so bottom edge never shows
-                const maxUp = windowHeight * 0.15; // relax cap to ~15% to keep more visible
+                const maxUp = windowHeight * 0.16; // cap ~16% of viewport
                 yPos = Math.max(yPos, -maxUp + baseOffsetUp);
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
