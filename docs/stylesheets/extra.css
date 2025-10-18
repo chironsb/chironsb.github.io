@@ -869,11 +869,25 @@ body:has(.mdx-parallax) .md-nav--primary {
 @media screen and (max-width: 768px) {
   body:has(.mdx-parallax) .md-nav__button,
   body:has(.mdx-parallax) .md-nav__title,
-  body:has(.mdx-parallax) .md-nav__item {
+  body:has(.mdx-parallax) .md-nav__item,
+  body:has(.mdx-parallax) .md-nav__link,
+  body:has(.mdx-parallax) .md-nav,
+  body:has(.mdx-parallax) [data-md-component="logo"],
+  body:has(.mdx-parallax) .md-header__logo,
+  body:has(.mdx-parallax) .md-header-nav__button,
+  body:has(.mdx-parallax) .md-header-nav__title,
+  body:has(.mdx-parallax) .md-tabs,
+  body:has(.mdx-parallax) .md-tabs__inner,
+  body:has(.mdx-parallax) .md-tabs__item,
+  body:has(.mdx-parallax) .md-tabs__link {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
 
