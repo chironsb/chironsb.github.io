@@ -865,7 +865,7 @@ body:has(.mdx-parallax) .md-nav--primary {
   z-index: -10 !important;
 }
 
-/* Extra mobile-specific hiding to prevent artifacts - ONLY on homepage with parallax */
+/* Extra mobile-specific hiding to prevent artifacts - ONLY sidebar on homepage with parallax */
 @media screen and (max-width: 768px) {
   body:has(.mdx-parallax) .md-sidebar__scrollwrap,
   body:has(.mdx-parallax) .md-sidebar__inner,
@@ -879,6 +879,17 @@ body:has(.mdx-parallax) .md-nav--primary {
     width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+  
+  /* Keep tabs visible on homepage */
+  body:has(.mdx-parallax) .md-tabs,
+  body:has(.mdx-parallax) .md-tabs__inner,
+  body:has(.mdx-parallax) .md-tabs__item,
+  body:has(.mdx-parallax) .md-tabs__link {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
 }
 
