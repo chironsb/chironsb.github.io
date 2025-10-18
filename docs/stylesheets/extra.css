@@ -858,10 +858,23 @@ body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
 .mdx-parallax ~ * .md-nav__item,
 .mdx-parallax ~ * .md-nav__link,
 .mdx-parallax ~ * .md-nav__title,
+.mdx-parallax ~ * .md-nav__button,
 body:has(.mdx-parallax) .md-nav--primary {
   opacity: 0 !important;
   visibility: hidden !important;
   z-index: -10 !important;
+}
+
+/* Extra mobile-specific hiding to prevent artifacts */
+@media screen and (max-width: 768px) {
+  body:has(.mdx-parallax) .md-nav__button,
+  body:has(.mdx-parallax) .md-nav__title,
+  body:has(.mdx-parallax) .md-nav__item {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }
 
 body:has(.mdx-parallax) .md-main,
