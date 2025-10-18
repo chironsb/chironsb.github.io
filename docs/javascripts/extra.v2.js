@@ -115,6 +115,7 @@ function initLenis() {
 }
 
 function initParallax() {
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
     const parallaxContainer = document.querySelector('.mdx-parallax');
     if (!parallaxContainer) {
         console.log('No parallax container found');
@@ -145,6 +146,8 @@ function initParallax() {
         
         parallaxLayers.forEach(layer => {
             const depth = parseFloat(layer.style.getPropertyValue('--md-parallax-depth')) || 0;
+            const bgImage = getComputedStyle(layer).backgroundImage || '';
+            const isGrassLayer = bgImage.includes('assets/images/layers/1.png') || bgImage.includes('layers/1.png');
             
             // Calculate parallax speed based on depth - fine-tuned
             let speed;
@@ -152,6 +155,11 @@ function initParallax() {
             else if (depth >= 5) speed = 0.06; // Mid-ground (statuia) moves down very subtly
             else if (depth >= 3) speed = 0.12; // Characters (birou) move slower in sus
             else speed = 0.32;                 // Foreground (iarba) moves faster
+
+            // Adjust grass layer on mobile: slower speed + higher start
+            if (isMobile && isGrassLayer) {
+                speed *= 0.7; // reduce speed by 30%
+            }
             
             // Adjust direction based on layer type
             let yPos;
@@ -165,6 +173,11 @@ function initParallax() {
             }
             
             // Apply transform to the layer
+            if (isMobile && isGrassLayer) {
+                // Start higher on mobile
+                const baseOffset = -windowHeight * 0.08; // raise ~8% of viewport
+                yPos += baseOffset;
+            }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
