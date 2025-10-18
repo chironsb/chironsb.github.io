@@ -879,7 +879,11 @@ body:has(.mdx-parallax) .md-nav--primary {
   body:has(.mdx-parallax) .md-tabs,
   body:has(.mdx-parallax) .md-tabs__inner,
   body:has(.mdx-parallax) .md-tabs__item,
-  body:has(.mdx-parallax) .md-tabs__link {
+  body:has(.mdx-parallax) .md-tabs__link,
+  body:has(.mdx-parallax) .md-sidebar__scrollwrap,
+  body:has(.mdx-parallax) .md-sidebar__inner,
+  body:has(.mdx-parallax) .md-nav--primary,
+  body:has(.mdx-parallax) .md-nav--secondary {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
