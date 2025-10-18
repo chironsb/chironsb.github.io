@@ -895,6 +895,7 @@ body:has(.mdx-parallax) .md-nav--primary {
 
 /* Hide mobile sidebar artifacts on NON-parallax pages (Getting Started, Capacități, etc.) */
 @media screen and (max-width: 768px) {
+  body:not(:has(.mdx-parallax)) .md-sidebar,
   body:not(:has(.mdx-parallax)) .md-sidebar__scrollwrap,
   body:not(:has(.mdx-parallax)) .md-sidebar__inner,
   body:not(:has(.mdx-parallax)) .md-nav--primary,

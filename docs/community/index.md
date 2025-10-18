@@ -1,23 +1,29 @@
-# Comunitate
+# Community
 
-Bun venit în comunitatea blogului lui Chiron! Aici poți găsi resurse pentru a te conecta cu alți dezvoltatori, pentru a împărți cunoștințe și a contribui la ecosistem.
+## 🚧 Work in Progress
 
-## Cum te poți implica
+This section is currently under development. We're working on building a vibrant community around Chiron's Blog.
 
-- **Discuții**: Alătură-te conversațiilor despre tehnologie și programare
-- **Feedback**: Lasă comentarii și sugestii pe articole
-- **Întrebări**: Pune întrebări despre conceptele discutate
-- **Resurse**: Descoperă instrumente și biblioteci utile
+### Coming Soon
 
-## Reguli de bază
+- **Discussion Forums**: Connect with other developers and share knowledge
+- **Feedback System**: Leave comments and suggestions on articles  
+- **Q&A Platform**: Ask questions about concepts discussed
+- **Resource Sharing**: Discover useful tools and libraries
 
-Comunitatea noastră se bazează pe respect, colaborare și ajutor mutual. Încurajez:
+### Community Guidelines
 
-- Feedback constructiv și discuții productive
-- Împărtășirea cunoștințelor și experiențelor
-- Ajutorarea începătorilor
-- Respectarea perspectivelor diferite
+Our community will be built on respect, collaboration, and mutual support. We encourage:
 
-## Rămâi conectat
+- Constructive feedback and productive discussions
+- Knowledge and experience sharing
+- Helping beginners
+- Respecting different perspectives
 
-Urmărește-mă pe rețelele sociale și participă la canalele comunității pentru a fi la curent cu ultimele articole și discuții.
+### Stay Connected
+
+Follow us on social media and join our community channels to stay updated with the latest articles and discussions.
+
+---
+
+*This page will be updated as we develop new community features.*
