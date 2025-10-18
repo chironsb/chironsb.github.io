@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced back to top functionality
     initEnhancedBackToTop();
     
+    // Initialize TOC click highlighting
+    initTOCClickHighlighting();
+    
     // Initialize smart TOC scrolling
     // setTimeout(initSmartTOCScrolling, 1000); // Disabled - let TOC scroll naturally
     
@@ -437,7 +440,27 @@ function initSmartTOCScrolling() {
         e.preventDefault();
         e.stopPropagation();
         
-        // Scroll this element directly
-        this.scrollBy(0, e.deltaY);
-    }, { passive: false });
+    // Scroll this element directly
+    this.scrollBy(0, e.deltaY);
+}, { passive: false });
+}
+
+// TOC Click Highlighting - make clicked item blue temporarily
+function initTOCClickHighlighting() {
+    const tocLinks = document.querySelectorAll('.md-sidebar--secondary .md-nav__link');
+    
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Remove blue class from all TOC links
+            tocLinks.forEach(l => l.classList.remove('toc-clicked'));
+            
+            // Add blue class to clicked link
+            this.classList.add('toc-clicked');
+            
+            // Remove blue class after 3 seconds
+            setTimeout(() => {
+                this.classList.remove('toc-clicked');
+            }, 3000);
+        });
+    });
 }

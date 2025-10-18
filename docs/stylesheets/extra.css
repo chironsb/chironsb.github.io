@@ -974,10 +974,10 @@ body:has(.mdx-parallax) .md-content {
   font-weight: 600 !important;
 }
 
-/* Clicked/visited items in TOC (right sidebar) - BLUE */
+/* Reset passed items to normal color - only show active */
 .md-sidebar--secondary .md-nav__link--passed {
-  color: var(--md-accent-fg-color) !important;
-  font-weight: 500 !important;
+  color: var(--md-default-fg-color) !important;
+  font-weight: normal !important;
 }
 
 /* Active item in TOC (right sidebar) - where you are scrolling - AMBER */
@@ -986,15 +986,28 @@ body:has(.mdx-parallax) .md-content {
   font-weight: 500 !important;
 }
 
-/* Clicked/visited items in left sidebar - BLUE */
+/* Reset passed items to normal color - only show active */
 .md-sidebar--primary .md-nav__link--passed {
-  color: var(--md-accent-fg-color) !important;
-  font-weight: 500 !important;
+  color: var(--md-default-fg-color) !important;
+  font-weight: normal !important;
 }
 
 /* Active page in left sidebar - AMBER */
 .md-sidebar--primary .md-nav__link--active {
   color: var(--md-primary-fg-color) !important;
+  font-weight: 500 !important;
+}
+
+/* Highlight clicked TOC item temporarily with blue */
+.md-sidebar--secondary .md-nav__link:focus,
+.md-sidebar--secondary .md-nav__link:target {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 500 !important;
+}
+
+/* Highlight clicked TOC item with blue class */
+.md-sidebar--secondary .md-nav__link.toc-clicked {
+  color: var(--md-accent-fg-color) !important;
   font-weight: 500 !important;
 }
 
