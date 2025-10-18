@@ -175,7 +175,7 @@ function initParallax() {
             // Apply transform to the layer
             if (isMobile && isGrassLayer) {
                 // Start higher on mobile
-                const baseOffset = -windowHeight * 0.08; // raise ~8% of viewport
+                const baseOffset = -windowHeight * 0.20; // raise ~20% of viewport
                 yPos += baseOffset;
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
