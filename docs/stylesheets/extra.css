@@ -897,7 +897,8 @@ body:has(.mdx-parallax) .md-nav--primary {
 @media screen and (max-width: 768px) {
   body:not(:has(.mdx-parallax)) .md-sidebar__scrollwrap,
   body:not(:has(.mdx-parallax)) .md-sidebar__inner,
-  body:not(:has(.mdx-parallax)) .md-nav--primary {
+  body:not(:has(.mdx-parallax)) .md-nav--primary,
+  body:not(:has(.mdx-parallax)) .md-sidebar--primary {
     display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
@@ -906,6 +907,20 @@ body:has(.mdx-parallax) .md-nav--primary {
     width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+  }
+}
+
+/* Fix Mermaid diagrams on mobile */
+@media screen and (max-width: 768px) {
+  .mermaid {
+    overflow-x: auto !important;
+    max-width: 100% !important;
+    font-size: 12px !important;
+  }
+  
+  .mermaid svg {
+    max-width: 100% !important;
+    height: auto !important;
   }
 }
 
