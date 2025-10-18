@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize smart TOC scrolling
     // setTimeout(initSmartTOCScrolling, 1000); // Disabled - let TOC scroll naturally
     
-    // Hide tabs during parallax on homepage
-    initTabsVisibility();
+    // Hide tabs during parallax on homepage - DISABLED (was causing mobile artifacts)
+    // initTabsVisibility();
     
     // Ensure back to top works universally on all pages
     setInterval(() => {
@@ -158,7 +158,7 @@ function initParallax() {
 
             // Adjust grass layer on mobile: slower speed + higher start
             if (isMobile && isGrassLayer) {
-                speed *= 0.7; // reduce speed by 30%
+                speed *= 0.5; // reduce speed by 50% (much slower)
             }
             
             // Adjust direction based on layer type
@@ -174,8 +174,8 @@ function initParallax() {
             
             // Apply transform to the layer
             if (isMobile && isGrassLayer) {
-                // Start higher on mobile
-                const baseOffset = -windowHeight * 0.20; // raise ~20% of viewport
+                // Start much higher on mobile
+                const baseOffset = -windowHeight * 0.35; // raise ~35% of viewport (much higher)
                 yPos += baseOffset;
             }
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
