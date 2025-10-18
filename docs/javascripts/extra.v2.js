@@ -1,3 +1,14 @@
+// Configure MathJax
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+
 // Parallax Effect JavaScript with Lenis Smooth Scrolling
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize smooth scrolling on all pages
