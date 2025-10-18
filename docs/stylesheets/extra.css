@@ -958,9 +958,21 @@ body:has(.mdx-parallax) .md-content {
   font-weight: 600 !important;
 }
 
+/* Clicked/visited items in TOC (right sidebar) - BLUE */
+.md-sidebar--secondary .md-nav__link--passed {
+  color: var(--md-accent-fg-color) !important;
+  font-weight: 500 !important;
+}
+
 /* Active item in TOC (right sidebar) - where you are scrolling - AMBER */
 .md-sidebar--secondary .md-nav__link--active {
   color: var(--md-primary-fg-color) !important;
+  font-weight: 500 !important;
+}
+
+/* Clicked/visited items in left sidebar - BLUE */
+.md-sidebar--primary .md-nav__link--passed {
+  color: var(--md-accent-fg-color) !important;
   font-weight: 500 !important;
 }
 
