@@ -62,8 +62,6 @@ markdown_extensions:
       permalink: true
   - pymdownx.arithmatex:
       generic: true
-      block_tag: div
-      block_class: math
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
@@ -81,9 +79,6 @@ markdown_extensions:
   - pymdownx.snippets:
       check_paths: true
   - pymdownx.superfences:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
       custom_fences:
         - name: mermaid
           class: mermaid
@@ -117,6 +112,4 @@ nav:
       - Lista Completă: strudelcheatsheet/99-Lista-Completa.md
   - Community:
     - Overview: community/index.md
-    - Contributing: community/contributing.md
-    - Events: community/events.md
-  - Contributing: contributing.md 
+    - Events: community/events.md 

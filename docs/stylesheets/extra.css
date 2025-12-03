@@ -145,6 +145,9 @@ body {
   color: var(--md-primary-fg-color) !important;
 }
 
+
+
+
 .md-header[data-md-state="shadow"] .md-tabs__link {
   color: rgba(255, 193, 7, 0.8) !important;
 }
@@ -256,7 +259,6 @@ body {
     opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Tabs sticky only on homepage - directly under header */
 body:has(.mdx-parallax) .md-tabs {
   position: sticky !important;
   top: 48px !important;
@@ -330,7 +332,6 @@ body:has(.md-header[data-md-state="shadow"]) .md-tabs,
     opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Hide tabs completely on homepage only */
 body:has(.mdx-parallax) .md-header[data-md-state="shadow"] ~ .md-tabs,
 body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
   height: 0 !important;
@@ -345,13 +346,11 @@ body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
     height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
-/* Hide only the navigation burger menu button, not the logo */
-.md-header__button.md-icon {
+.md-header__button.md-icon:not([data-md-component="logo"]):not([data-md-component="palette"]) {
   display: none !important;
 }
 
-/* Show logo button but hide hamburger menu */
-.md-header__button:not([data-md-component="logo"]) {
+.md-header__button:not([data-md-component="logo"]):not([data-md-component="palette"]) {
   display: none !important;
 }
 
@@ -386,6 +385,11 @@ body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
   .md-top:hover .md-top__inner {
     transform: scale(1.1) translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+    background: var(--md-accent-fg-color) !important;
+  }
+  
+  body:has(.mdx-parallax) .md-top {
+    display: none !important;
   }
   
 /* ===== BUTTONS ===== */
@@ -525,7 +529,10 @@ body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
   pointer-events: none !important;
 }
 
-.md-top,
+.md-top {
+  pointer-events: auto !important;
+}
+
 .md-header,
 .md-tabs,
 .md-nav {
@@ -548,12 +555,23 @@ body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
 .mdx-hero__inner {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 .mdx-hero__teaser {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 45%;
+  margin-left: 10%;
+  margin-right: auto;
+  text-align: left;
+}
+
+.mdx-hero__teaser h1 {
+  max-width: 100%;
+}
+
+.mdx-hero__teaser p {
+  max-width: 35%;
+  line-height: 1.6;
 }
 
 .mdx-hero__more {
@@ -681,6 +699,7 @@ body:has(.mdx-parallax) .md-header[data-md-state="shadow"] .md-tabs {
   max-width: none !important;
   width: 100% !important;
 }
+
 
 /* Grid layout - wider content area */
 .md-grid {
@@ -930,6 +949,7 @@ body:has(.mdx-parallax) .md-footer {
   z-index: -1;
   pointer-events: none;
 }
+
 
 /* Hide sidebars completely on homepage with parallax */
 body:has(.mdx-parallax) .md-sidebar--primary,
