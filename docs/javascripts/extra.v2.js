@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderTransition();
     initEnhancedBackToTop();
     initTOCClickHighlighting();
+    initTOCScrollIsolation();
 });
 
 let lenis;
@@ -316,5 +317,56 @@ function initTOCClickHighlighting() {
             }, 3000);
         });
     });
+}
+
+function initTOCScrollIsolation() {
+    const leftSidebar = document.querySelector('.md-sidebar--primary');
+    const rightSidebar = document.querySelector('.md-sidebar--secondary');
+    
+    // Function to isolate scroll for an element
+    function isolateScroll(element, elementName) {
+        if (!element) return;
+        
+        let isOverElement = false;
+        
+        // Detect mouse enter/leave
+        element.addEventListener('mouseenter', function() {
+            isOverElement = true;
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            isOverElement = false;
+        });
+        
+        // Prevent page scroll when wheel is over this element
+        element.addEventListener('wheel', function(e) {
+            if (isOverElement) {
+                // Always prevent page scroll when over this element
+                e.stopPropagation();
+                // Element will scroll naturally
+            }
+        }, { passive: false });
+        
+        // Also prevent page scroll from window when over element
+        window.addEventListener('wheel', function(e) {
+            if (isOverElement) {
+                // Prevent page scroll completely when over this element
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }, { passive: false });
+    }
+    
+    // Isolate scroll for each sidebar
+    if (leftSidebar) {
+        isolateScroll(leftSidebar, 'left sidebar');
+    }
+    
+    if (rightSidebar) {
+        isolateScroll(rightSidebar, 'right sidebar');
+    }
+    
+    // For main content, we want normal page scroll
+    // No isolation needed - it IS the page
 }
 
