@@ -1,3 +1,0 @@
-# Events
-
-🚧 Work in progress.
