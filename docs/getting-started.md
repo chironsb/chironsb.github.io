@@ -1,3 +1,3 @@
 # Getting Started
 
-## 🚧 Work in progress. 
+## 🚧 Work in progress

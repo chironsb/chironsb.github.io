@@ -93,7 +93,6 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Capacități: capacitati.md
   - Proiecte: proiecte.md
-  - Community:
-    - Overview: community/index.md
-    - Events: community/events.md 
+  - Community: community/index.md 
